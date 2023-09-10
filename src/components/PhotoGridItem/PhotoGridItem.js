@@ -19,11 +19,14 @@ const PhotoGridItem = ({ id, src, alt, tags }) => {
 					<Image src={src} alt={alt} />
 				</picture>
       </Anchor>
-      <Tags>
-        {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
+			<Tags>
+				{tags.map((tag) => (
+          <>
+						<Tag key={tag}>{tag}</Tag> &nbsp;
+					</>
         ))}
-      </Tags>
+			</Tags>
+
     </article>
   );
 };
@@ -43,13 +46,16 @@ const Image = styled.img`
 	object-fit: cover;
 `;
 
-const Tags = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+const Tags = styled.p`
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	margin-bottom: 1em;
 `;
 
-const Tag = styled.li`
+const Tag = styled.span`
+	display: inline-block;
   padding: 4px 8px;
   background: var(--color-gray-300);
   font-size: 0.875rem;
